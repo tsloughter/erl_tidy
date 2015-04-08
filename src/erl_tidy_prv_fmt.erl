@@ -15,14 +15,14 @@
 
 -spec init(rebar_state:state()) -> {ok, rebar_state:state()}.
 init(State) ->
-    State1 = rebar_state:add_provider(State, rebar_provider:create([{name, ?PROVIDER},
-                                                                    {module, ?MODULE},
-                                                                    {bare, false},
-                                                                    {deps, ?DEPS},
-                                                                    {example, "rebar3 fmt"},
-                                                                    {short_desc, "format modules."},
-                                                                    {desc, ""},
-                                                                    {opts, []}])),
+    State1 = rebar_state:add_provider(State, providers:create([{name, ?PROVIDER},
+                                                               {module, ?MODULE},
+                                                               {bare, false},
+                                                               {deps, ?DEPS},
+                                                               {example, "rebar3 fmt"},
+                                                               {short_desc, "format modules."},
+                                                               {desc, ""},
+                                                               {opts, []}])),
     {ok, State1}.
 
 -spec do(rebar_state:state()) -> {ok, rebar_state:state()}.
