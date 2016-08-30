@@ -1,8 +1,3 @@
-DO NOT USE THIS YET
-===================
-
-This WILL break all your codes.
-
 erl_tidy
 =====
 
