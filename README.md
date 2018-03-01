@@ -15,3 +15,13 @@ Add the following to your `rebar.config`
 And run:
 
     $ rebar3 fmt
+
+Run `rebar3 help fmt` to learn about formatting options.
+
+You also may specify options in your `rebar.config` like so:
+```erlang
+{fmt_opts, [
+  {auto_list_comp, false},
+  {keep_unused, true}
+]}.
+```
