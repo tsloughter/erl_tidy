@@ -42,9 +42,9 @@ format_error(Reason) ->
 
 format_apps(Opts, Apps) ->
     lists:foreach(fun(AppInfo) ->
-                          SrcDir = filename:join(rebar_app_info:dir(AppInfo), "src"),
+                          AppDir = rebar_app_info:dir(AppInfo),
                           rebar_log:log(info, "Formating ~s...", [rebar_app_info:name(AppInfo)]),
-                          erl_tidy:dir(SrcDir, Opts)
+                          erl_tidy:dir(AppDir, Opts)
                   end, Apps).
 
 fmt_opts() ->
