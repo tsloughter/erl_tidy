@@ -44,7 +44,10 @@ format_apps(Opts, Apps) ->
     lists:foreach(fun(AppInfo) ->
                           AppDir = rebar_app_info:dir(AppInfo),
                           rebar_log:log(info, "Formating ~s...", [rebar_app_info:name(AppInfo)]),
-                          erl_tidy:dir(AppDir, Opts)
+                          SrcDirs = [Dir || InAppDir <- ["src", "test", "include"],
+                                            Dir <- [filename:join(AppDir, InAppDir)],
+                                            filelib:is_dir(Dir)],
+                          lists:foreach(fun(Dir) -> erl_tidy:dir(Dir, Opts) end, SrcDirs)
                   end, Apps).
 
 fmt_opts() ->
